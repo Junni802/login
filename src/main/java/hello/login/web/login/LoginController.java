@@ -51,4 +51,17 @@ public class LoginController {
         return "redirect:/";
     }
 
+    @PostMapping("/logout")
+    public String logout(HttpServletResponse response) {
+        expireCookie(response, "memberId");
+        return "redirect:/";
+    }
+
+    public void expireCookie(HttpServletResponse response, String cookieName) {
+        Cookie cookie = new Cookie("memberId", null);
+        // cookie -> MaxAge가 0일 경우 자동으로 웹 브라우저에서 쿠키가 없는것으로 판단하고 쿠키가 없어진다.
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+    }
+
 }
