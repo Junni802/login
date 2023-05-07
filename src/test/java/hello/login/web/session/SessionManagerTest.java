@@ -8,11 +8,26 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SessionManagerTest {
 
     SessionManager sessionManager = new SessionManager();
+
+    /**
+     * UUID를 활용하여 랜덤번호를 만드는 메서드 생성
+     */
+    @Test
+    void Random() {
+        for (int i=0; i<10; i++) {
+            String sessionID = UUID.randomUUID().toString();
+            System.out.println(i + 1 + "번째 값입니다.");
+            System.out.println("sessionID = " + sessionID);
+            System.out.println("");
+        }
+    }
 
     @Test
     void sessionTest() {
